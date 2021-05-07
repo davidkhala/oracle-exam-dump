@@ -42,8 +42,11 @@ https://www.pass4success.com/oracle/exam/1z0-1089-20
     - [ ] BM.DenseIO2.52
     - [x] BM.Standard.E2.64
     - [ ] BM.GPU3.8
-- What frequency required for monte carlo?
-    - 1 core turbo, all core turbo?
+- You are comparing different processors for Monte Carlo simulation with millions of single core execution. What frequency will have the highest impact on the "time to solution" 
+    - [ ] Turbo frequency
+    - [ ] All core turbo frequency
+    - [ ] Only the network throughput
+    - [ ] Base frequency
 
 ## Network
 - Which three are available on Oracle Cloud Infrastructure (OCI) as load balancing policies?
@@ -220,7 +223,7 @@ BM.Standard.E2.64: 10 hours
 BM.Standard2.52: 12 hours
 Which one should you pick?
 
-- Which OCI storage options are supported for direct HDFS use in Hadoop?
+- Which two storages options are supported directly for direct HDFS use in Hadoop?
     - [ ] Object Storage
     - [x] Block Volume
     - [x] DenseIO NVMe
