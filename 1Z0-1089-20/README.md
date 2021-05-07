@@ -37,11 +37,11 @@ https://www.pass4success.com/oracle/exam/1z0-1089-20
 ## Compute
 - What do you need to do when you provision an OEL image from market place? 
     - Install vnc, SSh key, related packages 
-- What would you use as a first guess to run an embarrassingly parallel workload for risk analysis with Monte Carlo? The code is homegrown and has not changed much in the last decade. They will use a parallel file system outside of the compute cluster.
-    - [ ] BM.HPC2.36
-    - [ ] BM.DenseIO2.52
-    - [x] BM.Standard.E2.64
-    - [ ] BM.GPU3.8
+- Which shape is High memory workload 
+    - [ ] BM Standard E3 128
+    - [ ] BM Standard E2 64
+    - [ ] BM HPC 2.36
+    - [ ] BM GPU 3.8
 - You are comparing different processors for Monte Carlo simulation with millions of single core execution. What frequency will have the highest impact on the "time to solution" 
     - [ ] Turbo frequency
     - [ ] All core turbo frequency
@@ -49,6 +49,9 @@ https://www.pass4success.com/oracle/exam/1z0-1089-20
     - [ ] Base frequency
 
 ## Network
+- A linux visualization instance in the public subnet with Security List 0.0.0.0 for TCP port 22
+    What other rule do you absolutely need to be able to connect remotely.
+    - [ ] No other additional rules are needed.
 - Which three are available on Oracle Cloud Infrastructure (OCI) as load balancing policies?
     - [x] Least Connections
     - [x] Round Robin
@@ -77,11 +80,14 @@ https://www.pass4success.com/oracle/exam/1z0-1089-20
     The compute nodes are on subnet2(172.16.1.0/24), and there is a BM.Dense.I02.8 on subnet1 (172-16.0.0/24) that will serve as a bastion and file server.
 
     What security lists should you choose to be able to run the workloads while limiting access as possible?
-    - [ ] Subnet1: 0.0.0.0 for TCP port 22, subnet 1 and 2: 172.16.0.0/23 for all protocols
-    - [ ] Subnet1: 0.0.0.0 for all protocols, subnet2: 172.16.0-0/16 for all protocols
+    - [ ] Subnet1: 0.0.0.0 for TCP port 22, subnet 1 and 2: 172.16.0.0/23 for all TCP/UDP ports
+    - [ ] Subnet1: 0.0.0.0 for all protocols, subnet2: 172.16.0.0/16 for all protocols
     - [x] Subnet1: 172.16.1.0/24 for port 22, subnet2: 172.16.1.0/24 for all protocols
     - [ ] Subnet1: 0.0.0.0 for TCP port 27, subnet 7: 172.16.0.0/16 for TCP port 22
-- CIDR Range
+- CIDR 172.16.0.0/16, which following is included
+    - [ ] 172.16.32.0/23
+    - [ ] 172.16.32.0/16
+
 - What are cluster networks built on?
     - Built on top of instance pools feature
 ## Storage
@@ -113,6 +119,12 @@ https://www.pass4success.com/oracle/exam/1z0-1089-20
     - [x] iPerf
     - [ ] fio
     - [ ] Vdbench
+- Want to store small files (KBs) workload in a file system. 
+    What two options should you use to measure performance for this system.
+    - [ ] CPU
+    - [ ] Memory
+    - [x] High IOPS
+    - [x] Latency
 - A customer has a very busy workload. The model is very large (1 PB range) and only some small files are updated for new jobs. Throughput needed during the run is roughly 25GB/s.
 
     What Is a fast and cost-conscious way to handle the file system?
@@ -134,6 +146,8 @@ https://www.pass4success.com/oracle/exam/1z0-1089-20
     - [ ] Linux File Systems like XFS, EXT4, EXT3, etc
     - [ ] Network File System (NFS)
     - [x] Distributed File Systems like Gluster, OCFS2, GFS2
+- BM standard2.52 as file server. Which block volume config should you choose to ensure aggregate block volumes throughput is higher than network band width of a file servers.
+    - 
 - You are architecting the infrastructure for a file system.
     What are the different criteria you should use, and in what order to build a filesystem for optimal performance?
     - [x] Network Bandwidth > Number of Compute Cores/RAM > Storage
@@ -156,13 +170,11 @@ https://www.pass4success.com/oracle/exam/1z0-1089-20
     - CPU Utilization
     - Memory Utilization
 - When an instance pool scales in, what is the correct order that the instances are terminated?
-    - [ ] The number of instances is balanced across availability domains, the oldest instance within the fault domain is terminated, the number of instances Is balanced across fault domains.
+    - [ ] The number of instances is balanced across availability domains, the oldest instance within the fault domain is terminated, the number of instances is balanced across fault domains.
     - [x] The number of instances is balanced across availability domains, the number of instances is balanced across fault domains, the oldest instance within the fault domain is terminated.
     - [ ] The oldest instance within the fault domain is terminated, the number of instances is balanced across availability domains, the number of instances is balanced across fault domains.
     - [ ] The number of instances is balanced across fault domains, the number of instances is balanced across fault domains, the oldest instance within the fault domain is terminated.
-- Metrics to keep track of file system
-    - throughput
-    - latency
+
 ## Big Data
 - What are the challenges for customer running Big Data on Prem?
     - Tracking growth patterns and scaling infrastructure to meet capacity requirements
@@ -181,26 +193,30 @@ https://www.pass4success.com/oracle/exam/1z0-1089-20
     - Oracle Data Flow (ODF) 
 - What notebook is used in Data Science Platform
     - Jypter
-- What data source supported for Data Science Cloud Service?
-    - ADE??
-    - OCI Object Storage, AWS S3, Azure Blog, Google Object Storage
+- Which three data sources supported for Data Science Cloud Service?
+    - [ ] Autonomous Data Warehouse
+    - [ ] On-premises Oracle Database
+    - [ ] AWS S3
+    - [ ] Azure Blog
+    - [ ] Google Object Storage
 - Which Hadoop distributions are supported on OCI?
+    - Apache Hadoop
     - [x] Cloudera
     - [x] Hortonworks
     - [x] MapR
     - [ ] Pivotal EMC
-- What is Terasort
-    - Popular benchmark that measures the amount of time to sort 1 TB of randomly distributed data on a given computer system
-    - Used to measure MapReduce performance of an Apache Hadoop Cluster (all hardware layers - CPU, Memory, Storage, Network I/O)
-- What does Data Science integrate with
-    - ADW, Oracle Functions, Object storage 
+- What does TeraSort phase of TERASORT benchmark do
+    - [ ] Map and increase
+    - [ ] Map and reduce
+
+
+
+## Potential
 - Which one is the correct progression of steps when using Accelerated Data Science?
     - [ ] Data Acquisition ---> Feature Engineering ---> Exploratory Data Visualization ---> Model Training
     - [ ] Data Acquisition ---> Hyperparameter optimization ---> Feature Engineering ---> Model Training
     - [x] Data Acquisition ---> Exploratory Data Analysis and Visualization ---> Feature Engineering ---> Model Training
     - [ ] Data Acquisition ---> Feature Engineering ---> Model Training---> Exploratory Data Analysis and Visualization
-
-## Potential
 
 Which of the following shapes are available for Data Science Notebook Sessions?
 
