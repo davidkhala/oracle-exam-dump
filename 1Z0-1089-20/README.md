@@ -4,11 +4,16 @@ https://www.pass4success.com/oracle/exam/1z0-1089-20
 
 ## General
 - BM.2.36, 36 cores per node took 4 hours. 4 nodes took 3 hours. What is the efficiency? 
-    - Efficiency = Time ratio/Core ratio
-    - Efficiency 1 = 4 / 36 = 1/9
-    - Efficiency 2 = 3 / 4
-- For creating a file system with higher performance block volume, what minimum block volume size would you choose for highest throughput for 1MB block size 
-    - Throughput (MB/s) = IOPS * Block Size
+    - [ ] 100%
+    - [ ] 66%
+    - [x] 75%
+    - [ ] 50%
+- Needs to handle large files with a lot of nodes reading at the same time. 
+    Which minimum size of block volume maximizes the throughput
+    - [ ] 800 GB
+    - [ ] 1 TB
+    - [ ] 10 TB
+    - [ ] 500 GB 
 - Need to store 3TB of data how do you store it to maximize the throughput
     - Block size could be 1Byte, 4kByte, 1MByte. Default is 4kByte
 - When would you use HPC
