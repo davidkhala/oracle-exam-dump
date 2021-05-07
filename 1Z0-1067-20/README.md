@@ -1,3 +1,4 @@
+# Oracle Cloud Infrastructure 2020 Cloud Operations Associate
 ## Terraform and OCI Resource Manager
 - You run Terraform in your laptop.  After you provision an instance, you want to capture the IP address of the provisioned instance and save to a local file.
 Which Terraform feature that you will use to accomplish the task?
