@@ -8,14 +8,7 @@ https://www.pass4success.com/oracle/exam/1z0-1089-20
     - [ ] 66%
     - [x] 75%
     - [ ] 50%
-- Needs to handle large files with a lot of nodes reading at the same time. 
-    Which minimum size of block volume maximizes the throughput
-    - [ ] 800 GB
-    - [ ] 1 TB
-    - [ ] 10 TB
-    - [ ] 500 GB 
-- Need to store 3TB of data how do you store it to maximize the throughput
-    - Block size could be 1Byte, 4kByte, 1MByte. Default is 4kByte
+
 - When would you use HPC
     - [x] Computational Fluid Dynamics
     - [x] Monte Carlo Risk Analysis
@@ -30,26 +23,27 @@ https://www.pass4success.com/oracle/exam/1z0-1089-20
 	- [ ] Open MPI
     - [ ] IBM Platform MPI
     - [x] OCI MPI
-- Why 32 PPN (32 CPU Core) is running faster than 36 PPN?
-    - MPI
-- If one of the MPI node failed, what need to do in order to re-run the job automatically?
-
+- You are running a cluster using multiple BM.Standard2.52 machines. The model is on a NFS share running on block volume. You've tried doubling the number of machines but it's not runing any faster. 
+    Which two actions could potentially speed up this tightly coupled workload
+    - [ ] Switch to FSS for you file system.
+    - [x] Use Cluster Networking
+    - [ ] Use BM.HPC2.36
+    - [ ] Switch to ESS mode
 ## Compute
-- What do you need to do when you provision an OEL image from market place? 
-    - Install vnc, SSh key, related packages 
 - Which shape is High memory workload 
     - [ ] BM Standard E3 128
     - [ ] BM Standard E2 64
     - [ ] BM HPC 2.36
     - [ ] BM GPU 3.8
 - You are comparing different processors for Monte Carlo simulation with millions of single core execution. What frequency will have the highest impact on the "time to solution" 
-    - [ ] Turbo frequency
+    - [x] Turbo frequency
+        - https://issuu.com/dumpspanda_braindumps32/docs/1z0-1089-20-demo-file
     - [ ] All core turbo frequency
-    - [ ] Only the network throughput
+    - [ ] Only the network throughput will influence Monte Carlo simulations
     - [ ] Base frequency
 
 ## Network
-- A linux visualization instance in the public subnet with Security List 0.0.0.0 for TCP port 22
+- A Linux visualization instance in the public subnet with Security List 0.0.0.0 for TCP port 22
     What other rule do you absolutely need to be able to connect remotely.
     - [ ] No other additional rules are needed.
 - Which three are available on Oracle Cloud Infrastructure (OCI) as load balancing policies?
@@ -59,8 +53,8 @@ https://www.pass4success.com/oracle/exam/1z0-1089-20
     - [ ] Least CPU Utilization
     - [x] IP Hash
 - What are supported protocols in Load Balancer?
-    - TCP
-    - HTTP
+    - [x] TCP
+    - [x] HTTP
 - Which of the following is not a valid OCI load balancer shape? Select one.
     - [ ] 10 Mbps
     - [ ] 100 Mbps
@@ -89,18 +83,28 @@ https://www.pass4success.com/oracle/exam/1z0-1089-20
     - [ ] 172.16.32.0/16
 
 - What are cluster networks built on?
-    - Built on top of instance pools feature
+    - [ ] Built on top of instance pools feature
 ## Storage
-| Performance Level | IOPS/GB | Max IOPS/Volume | Throughput/GB | Max Throughput/Volume | VPUs/GB |
-| ----              | ----      | ----          | ----          | ----                  | ----      |
-| Lower Cost | 2                | 3000          | 240           | Up to 480             |   0       |
-| Balanced  |   60              |   25000       |   480         |   480                 | 10        |
-| Higher Performance|   75      | 35000         |   600         | 480                   | 20        |
+- A file system is built using BM.Standard2.52 Compute shape for File Servers. One 25 Gbps vNIC/network card is used to connect to 10 Block Volumes of 1TB each (max. 480MB/s per volume). The other 25 Gbps vNIC is used for sending/receiving data to/from client
+nodes. File system client instances who mount the file system are provisioned using VM.Standard2.16 Compute shapes. What is the max IO theoretical throughput a client node can get?
+    - [ ] 3125 MB/s
+    - [x] 2050 MB/s
+    - [ ] 4800 MB/s
+    - [ ] 6250 MB/s
 
+- What minimum size of block volume with Balanced performance tier maximizes throughput for large files
+    - [ ] 10 TB
+    - [ ] 1 TB
+    - [x] 32 TB
+    - [ ] 100 GB
+- Needs to handle large files with a lot of nodes reading at the same time. 
+    Which minimum size of block volume maximizes the throughput
+    - [ ] 800 GB
+    - [ ] 1 TB
+    - [ ] 10 TB
+    - [ ] 500 GB 
 - How are instances distributed in an instance pool?
-    - Distributed across all fault domains in a best-effort manner based on capacity.
-- What is the sequence to delete instance in instance pool? 
-    - Instance, boot volume, block volume
+    - [x] Distributed across all fault domains in a best-effort manner based on capacity.
 - What HDFS replication factor should be used for locally attached storage in HDFS?
     - [ ] 1
     - [ ] 2
@@ -158,8 +162,6 @@ https://www.pass4success.com/oracle/exam/1z0-1089-20
 ## Operation
 - In a job, nodes are known to fail, what should you do?
     - Rerun the job
-- How should you double the capacity of a 3000 core cluster
-    - Instance pool
 - What are the two types of autoscaling available on OCI? Select two.
     - [ ] Load based autoscaling
     - [x] Metrics based autoscaling
@@ -167,8 +169,8 @@ https://www.pass4success.com/oracle/exam/1z0-1089-20
     - [ ] Fault based autoscaling
     
 - What performance metrics support for metrics base autoscaling? 
-    - CPU Utilization
-    - Memory Utilization
+    - [ ] CPU Utilization
+    - [ ] Memory Utilization
 - When an instance pool scales in, what is the correct order that the instances are terminated?
     - [ ] The number of instances is balanced across availability domains, the oldest instance within the fault domain is terminated, the number of instances is balanced across fault domains.
     - [x] The number of instances is balanced across availability domains, the number of instances is balanced across fault domains, the oldest instance within the fault domain is terminated.
@@ -176,39 +178,42 @@ https://www.pass4success.com/oracle/exam/1z0-1089-20
     - [ ] The number of instances is balanced across fault domains, the number of instances is balanced across fault domains, the oldest instance within the fault domain is terminated.
 
 ## Big Data
-- What are the challenges for customer running Big Data on Prem?
-    - Tracking growth patterns and scaling infrastructure to meet capacity requirements
-    - Time associated with procuring, deploying and maintaining infrastructure to meet demand
-    - The cost associated with Disaster Recovery when dealing with Petabytes of data, and processing
-    - The cost and complexity associated with hardware refresh
+- Which is a common business problem for customers running Big Data workloads?
+    - [x] Cost associated to process a large scale data set
+    - [ ] Cost associated with Disaster Recovery for large deployments
+    - [ ] Ability to process a small data set at the minimum cost as possible
+    - [ ] Ability to process a large data set at the maximum cost as possible
 - What are some best practices for Big Data Migration?
-    - Object storage
-    - Data Transfer Appliance
-    - FastConnect
-- Most Common Big Data Workload are?
-    - In memory processing
-    - batch processing 
-    - ML (typically GPU based)
+    - [x] Object storage
+    - [x] Data Transfer Appliance
+    - [x] FastConnect
+
 - What Big Data solution can run Spark workload
-    - Oracle Data Flow (ODF) 
-- What notebook is used in Data Science Platform
-    - Jypter
+    - [ ] Oracle Data Flow (ODF) 
 - Which three data sources supported for Data Science Cloud Service?
     - [ ] Autonomous Data Warehouse
     - [ ] On-premises Oracle Database
-    - [ ] AWS S3
-    - [ ] Azure Blog
-    - [ ] Google Object Storage
+    - [x] AWS S3
+    - [x] Azure Blog
+    - [x] Google Object Storage
+### Hadoop    
 - Which Hadoop distributions are supported on OCI?
-    - Apache Hadoop
+    - [ ] Apache Hadoop
     - [x] Cloudera
     - [x] Hortonworks
     - [x] MapR
     - [ ] Pivotal EMC
-- What does TeraSort phase of TERASORT benchmark do
-    - [ ] Map and increase
-    - [ ] Map and reduce
-
+- What does TeraSort phase of TeraSort benchmark do?
+    - [ ] It maps and reduces source data in parallel manner, leveraging data locality to minimize network transfer
+    - [x] It randomly maps source data and reduces output to a smaller data set.
+        - https://issuu.com/dumpspanda_braindumps32/docs/1z0-1089-20-demo-file
+    - [ ] It maps and recudes one terabyte of data into a smaller data set
+    - [ ] It randomly maps source data and increases output to a bigger data set.
+- Which two storages options are supported directly for direct HDFS use in Hadoop?
+    - [ ] Object Storage
+    - [x] Block Volume
+    - [x] DenseIO NVMe
+    - [ ] FSS
 
 
 ## Potential
@@ -218,46 +223,8 @@ https://www.pass4success.com/oracle/exam/1z0-1089-20
     - [x] Data Acquisition ---> Exploratory Data Analysis and Visualization ---> Feature Engineering ---> Model Training
     - [ ] Data Acquisition ---> Feature Engineering ---> Model Training---> Exploratory Data Analysis and Visualization
 
-Which of the following shapes are available for Data Science Notebook Sessions?
-
-a. BM.GPU2.1
-- [x] VM.Standard2.1
-c. BM.GPU3.8
-- [x] VM.Standard2.16
-
-Why is Data Visualization necessary in Data Science?
-
-- [x] Visualize trends and patterns
-- [ ] Visualize Model lifecycle
-- [ ] Understand gradient values
-- [ ] Visual relationship of the hyperparameters
-
-You have run a workload on 2000 cores on OCI. Here is how long it took:
-BM.HPC2.36: 6 hours
-BM.Standard.E2.64: 10 hours
-- [x] BM.Standard.E3.128: 5 hours
-BM.Standard2.52: 12 hours
-Which one should you pick?
-
-- Which two storages options are supported directly for direct HDFS use in Hadoop?
-    - [ ] Object Storage
-    - [x] Block Volume
-    - [x] DenseIO NVMe
-    - [ ] FSS
-
-
-A file system is built using BM.Standard2.52 Compute shape for File Servers. One 25 Gbps NIC/network card is used to connect to 10 Block Volumes of 1TB each (max. 480MB/s per volume). The other 25 Gbps NIC is used for sending/receiving data to/from client
-nodes. File system client instances who mount the file system are provisioned using VM.Standard2.16 Compute shapes. What is the max IO theoretical throughput a client node can get?
-
-a. 3125 MB/s
-- [x] 2050 MB/s
-c. 4800 MB/s
-d. 6250 MB/s
-
-Which of the following options is not included in the OCI load balancer backend sets? Select one.
-
-a. A load balancing policy.
-b. A list of backend servers.
-- [x] Load balancer shape.
-d. A health check policy.
-e. Optional SSL handling.
+- Which of the following shapes are available for Data Science Notebook Sessions?
+    - [ ] BM.GPU2.1
+    - [x] VM.Standard2.1
+    - [ ] BM.GPU3.8
+    - [x] VM.Standard2.16
