@@ -16,7 +16,7 @@ https://www.pass4success.com/oracle/exam/1z0-1089-20
     - [ ] There Is no such thing as a free lunch.
     - [ ] An orchestra can only play well together If they have a great conductor.
     - [x] When chopping vegetable to prepare a 4 person-meal, 2 persons are going twice as fast as one, but 8 people may not be 8 times faster.
-    - [ ] In track and field, the 4xl00m relay is only 17% faster than the world record for individual 400m.
+    - [ ] In track and field, the 4xl00m relay is only 17% faster than the world record for an individual 400m.
 
 - Which Message Passing Interface (MPI) distribution is NOT available today?
     - [ ] Intel MPI
@@ -25,10 +25,17 @@ https://www.pass4success.com/oracle/exam/1z0-1089-20
     - [x] OCI MPI
 - You are running a cluster using multiple BM.Standard2.52 machines. The model is on a NFS share running on block volume. You've tried doubling the number of machines but it's not runing any faster. 
     Which two actions could potentially speed up this tightly coupled workload
-    - [ ] Switch to FSS for you file system.
+    - [ ] Switch to FSS for your file system.
     - [x] Use Cluster Networking
-    - [ ] Use BM.HPC2.36
+    - [x] Use BM.HPC2.36
     - [ ] Switch to ESS mode
+
+- You've spin up a GPU instance with the standard OEL image (GPU version) from the console network on Oracle Cloud Infrastructure (OCI)
+    What action do you need to do in order to be able to visualize your desktop remotely.
+    - [ ] Install Open MPI for distributed GPU access.
+    - [x] Install a desktop and VNC server
+    - [ ] Install NVDIA drivers
+    - [ ] Open a remote serial console
 ## Compute
 - Which shape is High memory workload 
     - [ ] BM Standard E3 128
@@ -121,37 +128,42 @@ nodes. File system client instances who mount the file system are provisioned us
     - [ ] IOR
     - [ ] IO500
     - [x] iPerf
-    - [ ] fio
+    - [ ] FIO
     - [ ] Vdbench
-- Want to store small files (KBs) workload in a file system. 
+- A customer wants to store small files (KBs) workload in a file system. 
     What two options should you use to measure performance for this system.
-    - [ ] CPU
-    - [ ] Memory
+    - [ ] CPU processor clock spped for faster processing
+    - [ ] Amount of Memory on file servers
     - [x] High IOPS
-    - [x] Latency
+    - [x] Low Latency
 - A customer has a very busy workload. The model is very large (1 PB range) and only some small files are updated for new jobs. Throughput needed during the run is roughly 25GB/s.
 
-    What Is a fast and cost-conscious way to handle the file system?
+    What is a fast and cost-conscious way to handle the file system?
 
     - [ ] Put the data in object storage, and mount It using s3fs-fuse project.
     - [x] Build a file-system using NVMe on Dense shapes. Then move the data to object storage when not needed.
-    - [ ] Build a file system using Block volumes and Standard BMs, take advantage of the different block volume performances levels.
+    - [ ] Build a file system using Block volumes and Standard BMs, take advantage of the different block volume performance levels.
     - [ ] Use NVMe on HPC shapes to build a File System with the RDMA connection.
 
-- What are the different types of Storage offerings available to build a filesystem on Oracle Cloud Infrastructure?
+- What are two different types of Storage offerings available to build a filesystem on Oracle Cloud Infrastructure (OCI)?
     - [x] Local NVMe SSDs on DenseIO and HPC compute shapes
     - [x] Block Volume Service
     - [ ] File Storage
     - [ ] Object Storage
-    - [ ] All of the above
 
-- OCI Block Volume Storage supports sharing a Block Volume among multiple compute instances in read/write or read only shareable mode. What file system should be used to allow multiple compute instances to read/write data concurrently without any data loss?
+- OCI Block Volume Storage supports sharing a Block Volume among multiple compute instances in read/write or read-only shareable mode. 
+    What file system should be used to allow multiple compute instances to read/write data concurrently without any data loss?
     - [x] Parallel File Systems like Lustre, IBM Spectrum Scale(GPFS), BeeGFS, etc
     - [ ] Linux File Systems like XFS, EXT4, EXT3, etc
     - [ ] Network File System (NFS)
     - [x] Distributed File Systems like Gluster, OCFS2, GFS2
-- BM standard2.52 as file server. Which block volume config should you choose to ensure aggregate block volumes throughput is higher than network band width of a file servers.
-    - 
+- You are building a large filesystem to maximize throughput of large files using high performance block volume and BM standard2.52 as file servers. 
+    Which block volume configuration should you choose to ensure aggregate block volume throughput is higher than network bandwidth of file servers.
+    - [ ] 7 Block Volumes of 800 GB
+    - [ ] 32 Block Volumes of 800 GB
+    - [ ] 5 Block Volumes of 32 TB
+    - [x] 6 Block Volumes of 32 TB
+        - https://www.marks4sure.com/1z0-1089-20-oracle-cloud-infrastructure-2020-hpc-and-big-data-solutions-associate-questions.html
 - You are architecting the infrastructure for a file system.
     What are the different criteria you should use, and in what order to build a filesystem for optimal performance?
     - [x] Network Bandwidth > Number of Compute Cores/RAM > Storage
@@ -167,7 +179,14 @@ nodes. File system client instances who mount the file system are provisioned us
     - [x] Metrics based autoscaling
     - [x] Schedule based autoscaling
     - [ ] Fault based autoscaling
-    
+
+- What are the three components for configuring autoscaling on Oracle Cloud Infrastructure (OCI)
+    - [x] Monitoring is enabled on the instances in the instance pool
+    - [ ] The instance pool supports the maxinum number of instances that you want to scale to. 
+    - [x] You have an instance pool
+        - Disagree from https://www.pass4success.com/oracle/exam/1z0-1089-20
+    - [x] You have a load balancer
+    - [ ] You have Bare Metal instances 
 - What performance metrics support for metrics base autoscaling? 
     - [ ] CPU Utilization
     - [ ] Memory Utilization
@@ -190,12 +209,24 @@ nodes. File system client instances who mount the file system are provisioned us
 
 - What Big Data solution can run Spark workload
     - [ ] Oracle Data Flow (ODF) 
-- Which three data sources supported for Data Science Cloud Service?
+### Oracle Data Science    
+- Which three data sources supported for Oracle Data Science?
     - [ ] Autonomous Data Warehouse
     - [ ] On-premises Oracle Database
-    - [x] AWS S3
+    - [x] AWS S3 bucket
     - [x] Azure Blog
     - [x] Google Object Storage
+- Which statement is NOT correct?
+    - [x] Oracle Data science is augmented with AI VM(??) for Data science
+    - [ ] Oracle Data science is not excluded from Universal Credit
+    - [ ] Oracle Data science can integrate with Oracle Function.
+        - (Oracle Data Science) Integrates with the rest of the OCI stack, including Functions, Data Flow, Autonomous Data Warehouse, and Object Storage.
+    - [ ] Oracle Data science does not support per second billing
+- Which one is the correct progression of steps when using Accelerated Data Science?
+    - [ ] Data Acquisition ---> Feature Engineering ---> Exploratory Data Visualization ---> Model Training
+    - [ ] Data Acquisition ---> Hyperparameter optimization ---> Feature Engineering ---> Model Training
+    - [x] Data Acquisition ---> Exploratory Data Analysis and Visualization ---> Feature Engineering ---> Model Training
+    - [ ] Data Acquisition ---> Feature Engineering ---> Model Training---> Exploratory Data Analysis and Visualization
 ### Hadoop    
 - Which Hadoop distributions are supported on OCI?
     - [ ] Apache Hadoop
@@ -207,9 +238,9 @@ nodes. File system client instances who mount the file system are provisioned us
     - [ ] It maps and reduces source data in parallel manner, leveraging data locality to minimize network transfer
     - [x] It randomly maps source data and reduces output to a smaller data set.
         - https://issuu.com/dumpspanda_braindumps32/docs/1z0-1089-20-demo-file
-    - [ ] It maps and recudes one terabyte of data into a smaller data set
+    - [ ] It maps and reduces one terabyte of data into a smaller data set
     - [ ] It randomly maps source data and increases output to a bigger data set.
-- Which two storages options are supported directly for direct HDFS use in Hadoop?
+- Which two storage options are supported directly for direct HDFS use in Hadoop?
     - [ ] Object Storage
     - [x] Block Volume
     - [x] DenseIO NVMe
@@ -217,14 +248,11 @@ nodes. File system client instances who mount the file system are provisioned us
 
 
 ## Potential
-- Which one is the correct progression of steps when using Accelerated Data Science?
-    - [ ] Data Acquisition ---> Feature Engineering ---> Exploratory Data Visualization ---> Model Training
-    - [ ] Data Acquisition ---> Hyperparameter optimization ---> Feature Engineering ---> Model Training
-    - [x] Data Acquisition ---> Exploratory Data Analysis and Visualization ---> Feature Engineering ---> Model Training
-    - [ ] Data Acquisition ---> Feature Engineering ---> Model Training---> Exploratory Data Analysis and Visualization
+
 
 - Which of the following shapes are available for Data Science Notebook Sessions?
     - [ ] BM.GPU2.1
     - [x] VM.Standard2.1
     - [ ] BM.GPU3.8
     - [x] VM.Standard2.16
+        - https://quizlet.com/522060200/hpcbig-data-certification-flash-cards/
