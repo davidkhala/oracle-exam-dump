@@ -3,10 +3,11 @@ https://www.pass4success.com/oracle/exam/1z0-1089-20
 ![](course.png)
 
 ## General
-- BM.2.36, 36 cores per node took 4 hours. 4 nodes took 3 hours. What is the efficiency? 
+- 2 BM.2.36 nodes, 2 nodes took 4 hours. 4 nodes took 3 hours. What is the efficiency? 
     - [ ] 100%
-    - [ ] 66%
-    - [x] 75%
+    - [x] 66%
+        - This means the improvement ratio, current / previous
+    - [ ] 75%
     - [ ] 50%
 
 - When would you use HPC
@@ -44,16 +45,17 @@ https://www.pass4success.com/oracle/exam/1z0-1089-20
     - [ ] BM HPC 2.36
     - [ ] BM GPU 3.8
 - You are comparing different processors for Monte Carlo simulation with millions of single core execution. What frequency will have the highest impact on the "time to solution" 
-    - [x] Turbo frequency
-        - https://issuu.com/dumpspanda_braindumps32/docs/1z0-1089-20-demo-file
-    - [ ] All core turbo frequency
+    - [ ] Turbo frequency
+    - [x] All core turbo frequency
+        - kenneth choice
     - [ ] Only the network throughput will influence Monte Carlo simulations
     - [ ] Base frequency
 
 ## Network
 - A Linux visualization instance in the public subnet with Security List 0.0.0.0 for TCP port 22
     What other rule do you absolutely need to be able to connect remotely.
-    - [ ] No other additional rules are needed.
+    - [x] No other additional rules are needed.
+    
 - Which three are available on Oracle Cloud Infrastructure (OCI) as load balancing policies?
     - [x] Least Connections
     - [x] Round Robin
@@ -82,9 +84,9 @@ https://www.pass4success.com/oracle/exam/1z0-1089-20
     The compute nodes are on subnet2(172.16.1.0/24), and there is a BM.Dense.I02.8 on subnet1 (172-16.0.0/24) that will serve as a bastion and file server.
 
     What security lists should you choose to be able to run the workloads while limiting access as possible?
-    - [ ] Subnet1: 0.0.0.0 for TCP port 22, subnet 1 and 2: 172.16.0.0/23 for all TCP/UDP ports
+    - [x] Subnet1: 0.0.0.0 for TCP port 22, subnet 1 and 2: 172.16.0.0/23 for all TCP/UDP ports
     - [ ] Subnet1: 0.0.0.0 for all protocols, subnet2: 172.16.0.0/16 for all protocols
-    - [x] Subnet1: 172.16.1.0/24 for port 22, subnet2: 172.16.1.0/24 for all protocols
+    - [ ] Subnet1: 172.16.1.0/24 for port 22, subnet2: 172.16.1.0/24 for all protocols
     - [ ] Subnet1: 0.0.0.0 for TCP port 27, subnet 7: 172.16.0.0/16 for TCP port 22
 - CIDR 172.16.0.0/16, which following is included
     - [x] 172.16.32.0/23
@@ -104,6 +106,7 @@ nodes. File system client instances who mount the file system are provisioned us
     - [ ] 4800 MB/s
     - [ ] 6250 MB/s
 
+- Other 4800 MB
 - What minimum size of block volume with **Balanced performance tier** maximizes throughput for large files
     - [ ] 10 TB
     - [x] 1 TB
@@ -131,8 +134,9 @@ nodes. File system client instances who mount the file system are provisioned us
     What will be the maximum sustained aggregate IO throughput for read and write, when two copies of the data (replica=2) are stored in filesystem for High Availability?
     - [ ] 5GB/s for both (read and write)
     - [ ] 2.5GB/s for read and 5GB/s for write
-    - [ ] 2.5GB/S for write and 5GB/s for read
-    - [x] 2.5GB/s for both (read and write)
+    - [x] 2.5GB/S for write and 5GB/s for read
+        - Kenneth choice: read throughput will not be affected by replica number
+    - [ ] 2.5GB/s for both (read and write)
 - What performance benchmark not use for a Linux Filesystem?
     - [ ] IOR
     - [ ] IO500
@@ -141,7 +145,7 @@ nodes. File system client instances who mount the file system are provisioned us
     - [ ] Vdbench
 - A customer wants to store small files (KBs) workload in a file system. 
     What two options should you use to measure performance for this system.
-    - [ ] CPU processor clock spped for faster processing
+    - [ ] CPU processor clock speed for faster processing
     - [ ] Amount of Memory on file servers
     - [x] High IOPS
     - [x] Low Latency
@@ -158,6 +162,7 @@ nodes. File system client instances who mount the file system are provisioned us
     - [x] Local NVMe SSDs on DenseIO and HPC compute shapes
     - [x] Block Volume Service
     - [ ] File Storage
+        - File Storage service is the partitioned & formatted result of block volume, always have inferior performance than block volume
     - [ ] Object Storage
 
 - OCI Block Volume Storage supports sharing a Block Volume among multiple compute instances in read/write or read-only shareable mode. 
@@ -169,16 +174,18 @@ nodes. File system client instances who mount the file system are provisioned us
 - You are building a large filesystem to maximize throughput of large files using high performance block volume and BM standard2.52 as file servers. 
     Which block volume configuration should you choose to ensure aggregate block volume throughput is higher than network bandwidth of file servers.
     - [ ] 7 Block Volumes of 800 GB
-    - [ ] 32 Block Volumes of 800 GB
+    - [x] 32 Block Volumes of 800 GB
+        - Kenneth Choice: 800 GB have reached the largest max thoughput per volume
     - [ ] 5 Block Volumes of 32 TB
-    - [x] 6 Block Volumes of 32 TB
-        - https://www.marks4sure.com/1z0-1089-20-oracle-cloud-infrastructure-2020-hpc-and-big-data-solutions-associate-questions.html
+    - [ ] 6 Block Volumes of 32 TB
+
 - You are architecting the infrastructure for a file system.
     What are the different criteria you should use, and in what order to build a filesystem for optimal performance?
-    - [x] Network Bandwidth > Number of Compute Cores/RAM > Storage
+    - [ ] Network Bandwidth > Number of Compute Cores/RAM > Storage
     - [ ] Storage > Network Bandwidth > Number of Compute Cores/RAM
     - [ ] Number of Compute Cores/RAM > Storage > Network Bandwidth
-    - [ ] Network Bandwidth > Storage > Number of Compute Cores/RAM
+    - [x] Network Bandwidth > Storage > Number of Compute Cores/RAM
+        - Kenneth choice: compute/RAM is not related to filesystem
 
 ## Operation
 - In a job, nodes are known to fail, what should you do?
@@ -191,10 +198,9 @@ nodes. File system client instances who mount the file system are provisioned us
 
 - What are the three components for configuring autoscaling on Oracle Cloud Infrastructure (OCI)
     - [x] Monitoring is enabled on the instances in the instance pool
-    - [ ] The instance pool supports the maxinum number of instances that you want to scale to. 
+    - [x] The instance pool supports the maxinum number of instances that you want to scale to. 
     - [x] You have an instance pool
-        - Disagree from https://www.pass4success.com/oracle/exam/1z0-1089-20
-    - [x] You have a load balancer
+    - [ ] You have a load balancer
     - [ ] You have Bare Metal instances 
 - What performance metrics support for metrics base autoscaling? 
     - [ ] CPU Utilization
@@ -240,13 +246,9 @@ nodes. File system client instances who mount the file system are provisioned us
     - [x] MapR
     - [ ] Pivotal EMC
 - What does TeraSort phase of TeraSort benchmark do?
-    - ??
-    - [x] It maps and reduces source data in parallel manner, leveraging data locality to minimize network transfer
+    - [ ] It maps and reduces source data in parallel manner, leveraging data locality to minimize network transfer
     - [ ] It randomly maps source data and reduces output to a smaller data set.
-        - https://issuu.com/dumpspanda_braindumps32/docs/1z0-1089-20-demo-file
-    - [ ] It maps and reduces one terabyte of data into a smaller data set
-        - TeraSort samples/reads the input data and uses Map/Reduce to sort the data into a total order
-        - https://www.ibm.com/docs/en/platform-symphony/7.1.1?topic=applications-terasort-benchmark
+    - [x] It maps and reduces one terabyte of data into a smaller data set
     - [ ] It randomly maps source data and increases output to a bigger data set.
 - Which two storage options are supported directly for direct HDFS use in Hadoop?
     - [ ] Object Storage
@@ -267,7 +269,9 @@ nodes. File system client instances who mount the file system are provisioned us
     - [ ] BM.GPU3.8
     - [x] BM.Standard.E2.64
     - [ ] BM.DenseIO2.52
+        - equipped with local NVMe
     - [ ] BM.HPC2.36
+        - equipped with local NVMe
 - Which one is the correct progression of steps when using Accelerated Data Science?
     - [ ] Data Acquisition ---> Feature Engineering ---> Exploratory Data Visualization ---> Model Training
     - [ ] Data Acquisition ---> Hyperparameter optimization ---> Feature Engineering ---> Model Training
