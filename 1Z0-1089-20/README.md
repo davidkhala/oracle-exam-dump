@@ -38,7 +38,8 @@ https://www.pass4success.com/oracle/exam/1z0-1089-20
     - [ ] Open a remote serial console
 ## Compute
 - Which shape is High memory workload 
-    - [ ] BM Standard E3 128
+    - [x] BM Standard E3 128
+        - Up to 2048 GB RAM https://docs.oracle.com/en-us/iaas/Content/Compute/References/computeshapes.htm#baremetalshapes__bm-standard
     - [ ] BM Standard E2 64
     - [ ] BM HPC 2.36
     - [ ] BM GPU 3.8
@@ -86,9 +87,11 @@ https://www.pass4success.com/oracle/exam/1z0-1089-20
     - [x] Subnet1: 172.16.1.0/24 for port 22, subnet2: 172.16.1.0/24 for all protocols
     - [ ] Subnet1: 0.0.0.0 for TCP port 27, subnet 7: 172.16.0.0/16 for TCP port 22
 - CIDR 172.16.0.0/16, which following is included
-    - [ ] 172.16.32.0/23
+    - [x] 172.16.32.0/23
+        - 172.16.32.0 ~ 172.16.33.255
     - [ ] 172.16.32.0/16
-
+        - This is same with 172.16.0.0/16
+    - Hints：CIDR 172.16.0.0/16 --> 172.16.0.0 ~ 172.16.255.255
 - What are cluster networks built on?
     - [ ] Built on top of instance pools feature
 ## Storage
@@ -101,14 +104,17 @@ nodes. File system client instances who mount the file system are provisioned us
     - [ ] 4800 MB/s
     - [ ] 6250 MB/s
 
-- What minimum size of block volume with Balanced performance tier maximizes throughput for large files
+- What minimum size of block volume with **Balanced performance tier** maximizes throughput for large files
     - [ ] 10 TB
-    - [ ] 1 TB
-    - [x] 32 TB
+    - [x] 1 TB
+    - [ ] 32 TB
     - [ ] 100 GB
 - Needs to handle large files with a lot of nodes reading at the same time. 
     Which minimum size of block volume maximizes the throughput
-    - [ ] 800 GB
+    - [x] 800 GB
+        - From 800GB ~ 32TB. The Max Throughput is same for all volume size.
+        - Higher performance scenario
+        - https://docs.oracle.com/en-us/iaas/Content/Block/Concepts/blockvolumeperformance.htm#Higher_Performance
     - [ ] 1 TB
     - [ ] 10 TB
     - [ ] 500 GB 
@@ -225,11 +231,7 @@ nodes. File system client instances who mount the file system are provisioned us
     - [ ] Oracle Data science can integrate with Oracle Function.
         - (Oracle Data Science) Integrates with the rest of the OCI stack, including Functions, Data Flow, Autonomous Data Warehouse, and Object Storage.
     - [ ] Oracle Data science does not support per second billing
-- Which one is the correct progression of steps when using Accelerated Data Science?
-    - [ ] Data Acquisition ---> Feature Engineering ---> Exploratory Data Visualization ---> Model Training
-    - [ ] Data Acquisition ---> Hyperparameter optimization ---> Feature Engineering ---> Model Training
-    - [x] Data Acquisition ---> Exploratory Data Analysis and Visualization ---> Feature Engineering ---> Model Training
-    - [ ] Data Acquisition ---> Feature Engineering ---> Model Training---> Exploratory Data Analysis and Visualization
+
 ### Hadoop    
 - Which Hadoop distributions are supported on OCI?
     - [ ] Apache Hadoop
@@ -238,10 +240,13 @@ nodes. File system client instances who mount the file system are provisioned us
     - [x] MapR
     - [ ] Pivotal EMC
 - What does TeraSort phase of TeraSort benchmark do?
-    - [ ] It maps and reduces source data in parallel manner, leveraging data locality to minimize network transfer
-    - [x] It randomly maps source data and reduces output to a smaller data set.
+    - ??
+    - [x] It maps and reduces source data in parallel manner, leveraging data locality to minimize network transfer
+    - [ ] It randomly maps source data and reduces output to a smaller data set.
         - https://issuu.com/dumpspanda_braindumps32/docs/1z0-1089-20-demo-file
     - [ ] It maps and reduces one terabyte of data into a smaller data set
+        - TeraSort samples/reads the input data and uses Map/Reduce to sort the data into a total order
+        - https://www.ibm.com/docs/en/platform-symphony/7.1.1?topic=applications-terasort-benchmark
     - [ ] It randomly maps source data and increases output to a bigger data set.
 - Which two storage options are supported directly for direct HDFS use in Hadoop?
     - [ ] Object Storage
@@ -263,4 +268,8 @@ nodes. File system client instances who mount the file system are provisioned us
     - [x] BM.Standard.E2.64
     - [ ] BM.DenseIO2.52
     - [ ] BM.HPC2.36
-    
+- Which one is the correct progression of steps when using Accelerated Data Science?
+    - [ ] Data Acquisition ---> Feature Engineering ---> Exploratory Data Visualization ---> Model Training
+    - [ ] Data Acquisition ---> Hyperparameter optimization ---> Feature Engineering ---> Model Training
+    - [x] Data Acquisition ---> Exploratory Data Analysis and Visualization ---> Feature Engineering ---> Model Training
+    - [ ] Data Acquisition ---> Feature Engineering ---> Model Training---> Exploratory Data Analysis and Visualization
