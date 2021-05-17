@@ -62,7 +62,7 @@ https://www.pass4success.com/oracle/exam/1z0-1089-20
 - What are supported protocols in Load Balancer?
     - [x] TCP
     - [x] HTTP
-- Which of the following is not a valid OCI load balancer shape? Select one.
+- Which of the following is NOT a valid OCI load balancer shape? Select one.
     - [ ] 10 Mbps
     - [ ] 100 Mbps
     - [ ] 400 Mbps
@@ -92,8 +92,10 @@ https://www.pass4success.com/oracle/exam/1z0-1089-20
 - What are cluster networks built on?
     - [ ] Built on top of instance pools feature
 ## Storage
-- A file system is built using BM.Standard2.52 Compute shape for File Servers. One 25 Gbps vNIC/network card is used to connect to 10 Block Volumes of 1TB each (max. 480MB/s per volume). The other 25 Gbps vNIC is used for sending/receiving data to/from client
-nodes. File system client instances who mount the file system are provisioned using VM.Standard2.16 Compute shapes. What is the max IO theoretical throughput a client node can get?
+- A file system is built using BM.Standard2.52 Compute shape for File Servers.
+    One 25 Gbps vNIC/network card is used to connect to 10 Block Volumes of 1TB each (max. 480MB/s per volume). The other 25 Gbps vNIC is used for sending/receiving data to/from client
+nodes. File system client instances who mount the file system are provisioned using VM.Standard2.16 Compute shapes. 
+    What is the max IO theoretical throughput a client node can get?
     - [ ] 3125 MB/s
     - [x] 2050 MB/s
     - [ ] 4800 MB/s
@@ -116,6 +118,7 @@ nodes. File system client instances who mount the file system are provisioned us
     - [ ] 1
     - [ ] 2
     - [x] 3
+        - This is the answer from the Practise Exam
     - [ ] 4
 - A two node clustered/parallel filesystem built using Baremetal Compute shape (BM.Standard2.52) and Block Volume Storage delivers maximum sustained aggregate IO throughput of 5GB/s for read and write, while storing a single copy of the data (replica=l) in filesystem.
 
@@ -248,11 +251,16 @@ nodes. File system client instances who mount the file system are provisioned us
 
 
 ## Potential
-
-
 - Which of the following shapes are available for Data Science Notebook Sessions?
     - [ ] BM.GPU2.1
     - [x] VM.Standard2.1
     - [ ] BM.GPU3.8
     - [x] VM.Standard2.16
         - https://quizlet.com/522060200/hpcbig-data-certification-flash-cards/
+- What would you use to run an embarrasingly parallel workload for risk analysis with Monte Carlo?
+    The code is homegrown and has not changed much in the last decade. They will use a parallel file system outside of the compute cluster
+    - [ ] BM.GPU3.8
+    - [x] BM.Standard.E2.64
+    - [ ] BM.DenseIO2.52
+    - [ ] BM.HPC2.36
+    
