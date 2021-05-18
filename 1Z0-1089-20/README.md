@@ -1,18 +1,34 @@
-https://www.pass4success.com/oracle/exam/1z0-1089-20
 
-![](course.png)
 
 ## General
-- 2 BM.2.36 nodes, 2 nodes took 4 hours. 4 nodes took 3 hours. What is the efficiency? 
+- A customer ran a Job on 2 BM.HPC2.36, and the job took 4 hours using 32 cores of each node. They later ran on 4 nodes and the Job took 3 hours. What Is the efficiency gained?
     - [ ] 100%
     - [x] 66%
         - This means the improvement ratio, current / previous
     - [ ] 75%
     - [ ] 50%
 
-- When would you use HPC
+-  You've run a task on Oracle Cloud Infrastructure (OCI)
+    > BM Standard E3 128:   4h
+    > BM HPC 2.36:          4h
+    > BM Standard E3 2.52:    6h
+    > BM GPU3.8             2h
+    What is the most cost effective option
+    - [ ] BM GPU3.8
+    - [ ] BM Standard2.52
+    - [ ] BM Standard E3.128
+    - [ ] BM HPC2.36
+- You are building a file system that needs to handle large files with a lot of nodes reading at the same time.
+    What should be your main goal?
+    - [ ] Minimize latency
+    - [ ] Maximize Latency while keep throughput above a certain threshold
+    - [ ] Minimize throughput while keeping the latency low
+    - [x] Maximize throughput
+- Which two types of workloads can benefit from Cluster Networking (RDMA)
     - [x] Computational Fluid Dynamics
     - [x] Monte Carlo Risk Analysis
+    - [ ] Movie Rendering
+    - [ ] HPC File Server
 - Which is an accurate analogy for Amdahl's law?
     - [ ] There Is no such thing as a free lunch.
     - [ ] An orchestra can only play well together If they have a great conductor.
@@ -31,14 +47,19 @@ https://www.pass4success.com/oracle/exam/1z0-1089-20
     - [x] Use BM.HPC2.36
     - [ ] Switch to ESS mode
 
-- You've spin up a GPU instance with the standard OEL image (GPU version) from the console network on Oracle Cloud Infrastructure (OCI)
+- You've spun up a GPU instance with the standard OEL image (GPU version) from the console network on Oracle Cloud Infrastructure (OCI)
     What action do you need to do in order to be able to visualize your desktop remotely.
     - [ ] Install Open MPI for distributed GPU access.
     - [x] Install a desktop and VNC server
     - [ ] Install NVDIA drivers
     - [ ] Open a remote serial console
+- Which workload is massively parallel in nature
+    - [x] Map/Reduce
+    - [ ] SQL Queries
+    - [ ] ETL
+    - [ ] Streaming
 ## Compute
-- Which shape is High memory workload 
+- When running a high memory workload, what should be your machine of choice?
     - [x] BM Standard E3 128
         - Up to 2048 GB RAM https://docs.oracle.com/en-us/iaas/Content/Compute/References/computeshapes.htm#baremetalshapes__bm-standard
     - [ ] BM Standard E2 64
@@ -50,7 +71,28 @@ https://www.pass4success.com/oracle/exam/1z0-1089-20
         - kenneth choice
     - [ ] Only the network throughput will influence Monte Carlo simulations
     - [ ] Base frequency
+- You have two different workloads, workload 1 does not scale very well (~100 cores) and requires a very high memory bandwidth, and a workload 2 that Is compute bound and IO intensive.
+    Which Instances should you select?
 
+    - [ ] 1: BM.HPC2.36 2: BM.Standard.2.52
+    - [x] 1: BM.Standard.E3.128 2: BM.HPC2.36
+    - [ ] 1: BM.HPC2.36 2: BM.Standard.E3.128
+    - [ ] 1: BM.Standard2.52 2: BM.HPC2-36
+- What would you use to run an embarrasingly parallel workload for risk analysis with Monte Carlo?
+    The code is homegrown and has not changed much in the last decade. They will use a parallel file system outside of the compute cluster
+    - [ ] BM.GPU3.8
+    - [x] BM.Standard.E2.64
+    - [ ] BM.DenseIO2.52
+        - equipped with local NVMe
+    - [ ] BM.HPC2.36
+        - equipped with local NVMe
+- A customer has decided to user Oracle Cloud Infrastructure
+    ... RPO 4 hours, and an RTO of 1 hour
+    Which two options should they consider on OCI to meet
+    - [ ] Replicate data to OCI Object Storage in near-realtime
+    - [x] Replicate data to a Haddoop cluster running on OCI in near-realtime
+    - [ ] Use Terraform to rapidly provision Hadoop Cluster on OCI
+    - [x] Replicate data to OCI Object Storage every hour
 ## Network
 - A Linux visualization instance in the public subnet with Security List 0.0.0.0 for TCP port 22
     What other rule do you absolutely need to be able to connect remotely.
@@ -62,9 +104,11 @@ https://www.pass4success.com/oracle/exam/1z0-1089-20
     - [ ] Random
     - [ ] Least CPU Utilization
     - [x] IP Hash
-- What are supported protocols in Load Balancer?
-    - [x] TCP
-    - [x] HTTP
+- Which two options are valid when configuring health check ... in Load Balancer?
+    - [ ] FTP level health checks
+    - [x] TCP level health checks
+    - [ ] UDP level health checks
+    - [x] HTTP level health checks
 - Which of the following is NOT a valid OCI load balancer shape? Select one.
     - [ ] 10 Mbps
     - [ ] 100 Mbps
@@ -87,7 +131,7 @@ https://www.pass4success.com/oracle/exam/1z0-1089-20
     - [x] Subnet1: 0.0.0.0 for TCP port 22, subnet 1 and 2: 172.16.0.0/23 for all TCP/UDP ports
     - [ ] Subnet1: 0.0.0.0 for all protocols, subnet2: 172.16.0.0/16 for all protocols
     - [ ] Subnet1: 172.16.1.0/24 for port 22, subnet2: 172.16.1.0/24 for all protocols
-    - [ ] Subnet1: 0.0.0.0 for TCP port 27, subnet 7: 172.16.0.0/16 for TCP port 22
+    - [ ] Subnet1: 0.0.0.0 for TCP port 22, subnet 7: 172.16.0.0/16 for TCP port 22
 - CIDR 172.16.0.0/16, which following is included
     - [x] 172.16.32.0/23
         - 172.16.32.0 ~ 172.16.33.255
@@ -106,7 +150,14 @@ nodes. File system client instances who mount the file system are provisioned us
     - [ ] 4800 MB/s
     - [ ] 6250 MB/s
 
-- Other 4800 MB
+- A file system is built using two BM.Standard2.52 Compute shapes for File servers. On each file server, one 25 Gbps (3125 MB/s) NIC/network card is used to connect to 10 Block Volumes of 1TB each (max. 480MB/s per volume) and other 25 Gbps NIC Is used for sending/receiving data to/from client nodes.
+    File system client instances which mount the file system are provisioned using VM.Standard2.16 Compute shapes. (Network bandwidth: l6.4Gbps(2050 MB/s))
+    What is the max aggregate IO throughput (theoretical) of the file system?
+
+    - [ ] 6250 MB/s
+    - [x] 4800 MB/s
+    - [ ] 3125 MB/s
+    - [ ] 9600 MB/s
 - What minimum size of block volume with **Balanced performance tier** maximizes throughput for large files
     - [ ] 10 TB
     - [x] 1 TB
@@ -123,12 +174,13 @@ nodes. File system client instances who mount the file system are provisioned us
     - [ ] 500 GB 
 - How are instances distributed in an instance pool?
     - [x] Distributed across all fault domains in a best-effort manner based on capacity.
-- What HDFS replication factor should be used for locally attached storage in HDFS?
-    - [ ] 1
-    - [ ] 2
-    - [x] 3
-        - This is the answer from the Practise Exam
-    - [ ] 4
+- On Oracle Cloud Infrastructure (OCI), a customer wants to build a 3TB filesystem for high throughput oriented workloads
+    which action provides the highest IO throughput using OCI block volumes for storage?
+    - [ ] Attach one Block volume of 3TB volume size and use filesystem Block size of 256k or lower
+    - [ ] Attach one Block volume of 3TB volume size and use filesystem Block size of 1M or higher
+    - [ ] Attach three Block volume of 1TB each and use filesystem Block size of 256K or lower
+    - [ ] Attach three Block volume of 1TB each and use filesystem block size of 1M or higher
+
 - A two node clustered/parallel filesystem built using Baremetal Compute shape (BM.Standard2.52) and Block Volume Storage delivers maximum sustained aggregate IO throughput of 5GB/s for read and write, while storing a single copy of the data (replica=l) in filesystem.
 
     What will be the maximum sustained aggregate IO throughput for read and write, when two copies of the data (replica=2) are stored in filesystem for High Availability?
@@ -186,10 +238,38 @@ nodes. File system client instances who mount the file system are provisioned us
     - [ ] Number of Compute Cores/RAM > Storage > Network Bandwidth
     - [x] Network Bandwidth > Storage > Number of Compute Cores/RAM
         - Kenneth choice: compute/RAM is not related to filesystem
+- You are building a file system of 10TB Storage Capacity
+    Volume Storage. Balanced Elastic Performance 
+    Which two options are correct about how many block volumes
+    - [x] 10 Block Volumes of 1TB size
+    - [ ] One Block Volume of 10TB size
+    - [ ] 20 Block Volumes of 500GB size
+    - [ ] 8 Block Volumes of 1.25TB size
 
 ## Operation
-- In a job, nodes are known to fail, what should you do?
-    - Rerun the job
+- On a RDMA cluster, a latency test was conducted
+    | Node1 |Node2| Latency (micro-seconds)|
+    | ---- | ---- | ---- |
+    | 1 | 2 | 1, 74 |
+    | 1 | 3 | 1, 78 |
+    | 1 | 4 | 3, 1 |
+    | 2 | 3 | 1, 74 |
+    | 2 | 4 | 3, 08 |
+    | 3 | 4 | 3, 11 |     
+    What should you do
+    - [ ] Report the higher latency througha SR
+    - [x] Rerun the test and see if it is consistent
+    - [ ] Latency is not critical, check the bandwidth
+    - [ ] Nonthing, the behavior is normal
+    
+- Which statement is correct about deleting an instance pool
+    - [x] Instances and block volumes will be deleted
+        - When you delete an instance pool, the resources that are associated with the pool are permanently deleted. This includes instances that were created by the pool, instances that are attached to the pool, attached boot volumes, and block volumes.
+        - https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/deletinginstancepool.htm
+    - [ ] Associated instances and attached boot volumes will be deleted. block volumes will be detached
+    - [ ] Nothing will be deleted
+    - [ ] Instances and boot volumes will be deleted
+    - [ ] Only the instances will be deleted
 - What are the two types of autoscaling available on OCI? Select two.
     - [ ] Load based autoscaling
     - [x] Metrics based autoscaling
@@ -202,9 +282,12 @@ nodes. File system client instances who mount the file system are provisioned us
     - [x] You have an instance pool
     - [ ] You have a load balancer
     - [ ] You have Bare Metal instances 
-- What performance metrics support for metrics base autoscaling? 
-    - [ ] CPU Utilization
-    - [ ] Memory Utilization
+- Which two performance metrics can be used to trigger scaling actions in autoscaling? 
+    - [ ] Disk IOPS
+    - [ ] Network throughput
+    - [ ] Network latency
+    - [x] CPU Utilization
+    - [x] Memory Utilization
 - When an instance pool scales in, what is the correct order that the instances are terminated?
     - [ ] The number of instances is balanced across availability domains, the oldest instance within the fault domain is terminated, the number of instances is balanced across fault domains.
     - [x] The number of instances is balanced across availability domains, the number of instances is balanced across fault domains, the oldest instance within the fault domain is terminated.
@@ -222,8 +305,22 @@ nodes. File system client instances who mount the file system are provisioned us
     - [x] Data Transfer Appliance
     - [x] FastConnect
 
+- Which two Oracle Cloud Infrastructure (OCI) shapes are a good choice for Spark workload
+    - [ ] BM.Standard
+    - [ ] HPC
+    - [ ] VM.Standard
+    - [ ] GPU
 - What Big Data solution can run Spark workload
-    - [ ] Oracle Data Flow (ODF) 
+    - [x] Oracle Data Flow
+    - [ ] Self-managed Hadoop deployment
+    - [ ] Self-managed Spark deployment
+    - [ ] Big Data Service
+- Which is NOT an advantage associated with moving a Big Data workload to Oracle Cloud Infrastructure (OCI)?
+    - [ ] managed service offerings to support common Big Data workloads
+    - [ ] best price / performance for Big Data workloads In the Cloud
+    - [x] availability of Oracle Airflow
+    - [ ] Object Storage as Data Lake
+    - [ ] dynamically scale capacity against workload
 ### Oracle Data Science    
 - Which three data sources supported for Oracle Data Science?
     - [ ] Autonomous Data Warehouse
@@ -238,6 +335,12 @@ nodes. File system client instances who mount the file system are provisioned us
         - (Oracle Data Science) Integrates with the rest of the OCI stack, including Functions, Data Flow, Autonomous Data Warehouse, and Object Storage.
     - [ ] Oracle Data science does not support per second billing
 
+- Which statement correctly describes Oracle Data Science
+    - [x] It enables data science teams to build, train and manage machine learning models on Oracle Cloud
+    - [ ] It provides management for on-premise machine learning models
+    - [ ] Oracle's Data Science model catalog holds contains only the model artifact
+    - [ ] It is primarily focused on supporting a single data scientist
+
 ### Hadoop    
 - Which Hadoop distributions are supported on OCI?
     - [ ] Apache Hadoop
@@ -250,13 +353,22 @@ nodes. File system client instances who mount the file system are provisioned us
     - [ ] It randomly maps source data and reduces output to a smaller data set.
     - [x] It maps and reduces one terabyte of data into a smaller data set
     - [ ] It randomly maps source data and increases output to a bigger data set.
-- Which two storage options are supported directly for direct HDFS use in Hadoop?
+- Which two Oracle Cloud Infrastructure (OCI) storage options are supported for direct HDFS use in Hadoop?
     - [ ] Object Storage
     - [x] Block Volume
     - [x] DenseIO NVMe
     - [ ] FSS
-
-
+- What HDFS replication factor should be used for locally attached storage in HDFS?
+    - [ ] 1
+    - [ ] 2
+    - [x] 3
+        - This is the answer from the Practise Exam
+    - [ ] 4
+- What HDFS replication factor can be used with Block Volumes to optimize cost?
+    - [ ] 1
+    - [x] 2
+    - [ ] 3
+    - [ ] 4 
 ## Potential
 - Which of the following shapes are available for Data Science Notebook Sessions?
     - [ ] BM.GPU2.1
@@ -264,16 +376,17 @@ nodes. File system client instances who mount the file system are provisioned us
     - [ ] BM.GPU3.8
     - [x] VM.Standard2.16
         - https://quizlet.com/522060200/hpcbig-data-certification-flash-cards/
-- What would you use to run an embarrasingly parallel workload for risk analysis with Monte Carlo?
-    The code is homegrown and has not changed much in the last decade. They will use a parallel file system outside of the compute cluster
-    - [ ] BM.GPU3.8
-    - [x] BM.Standard.E2.64
-    - [ ] BM.DenseIO2.52
-        - equipped with local NVMe
-    - [ ] BM.HPC2.36
-        - equipped with local NVMe
 - Which one is the correct progression of steps when using Accelerated Data Science?
     - [ ] Data Acquisition ---> Feature Engineering ---> Exploratory Data Visualization ---> Model Training
     - [ ] Data Acquisition ---> Hyperparameter optimization ---> Feature Engineering ---> Model Training
     - [x] Data Acquisition ---> Exploratory Data Analysis and Visualization ---> Feature Engineering ---> Model Training
     - [ ] Data Acquisition ---> Feature Engineering ---> Model Training---> Exploratory Data Analysis and Visualization
+
+
+
+- Which benchmark is important to a customer when considering Big Data workloads on Oracle Cloud Infrastructure (OCI)?
+    - [x] TPC-DS
+        - TPC-DS is the de-facto industry standard benchmark for measuring the performance of decision support solutions including, but not limited to, Big Data systems. 
+    - [ ] TPC-DI
+    - [ ] TPC-C
+    - [ ] Terasort
